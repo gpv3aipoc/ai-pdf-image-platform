@@ -95,3 +95,13 @@ This repository is a development baseline, not a security-reviewed production de
 - If OCR is enabled, install the Tesseract binary separately and ensure it is on `PATH`.
 - If OpenCV is unavailable, detection/mask generation returns a graceful "not configured" result.
 - PostgreSQL is optional for the local demo pipeline but is included for deployment and schema evolution.
+
+
+## Source archive
+
+The complete generated project bundle is stored in `PROJECT_SOURCE.zip.base64`. To reconstruct the ZIP on Windows PowerShell:
+
+```powershell
+[IO.File]::WriteAllBytes('project-source.zip', [Convert]::FromBase64String((Get-Content .\PROJECT_SOURCE.zip.base64 -Raw)))
+Expand-Archive .\project-source.zip -DestinationPath .\source
+```
